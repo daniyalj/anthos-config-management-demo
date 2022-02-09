@@ -7,8 +7,6 @@ metadata:
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-application-controller
-  annotations:
-    configmanagement.gke.io/cluster-selector: gcp-anthos, aws-anthos
 rules:
 - apiGroups:
   - '*'
@@ -29,8 +27,6 @@ metadata:
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/part-of: argocd
   name: argocd-server
-  annotations:
-    configmanagement.gke.io/cluster-selector: gcp-anthos, aws-anthos
 rules:
 - apiGroups:
   - '*'
@@ -62,8 +58,6 @@ metadata:
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/part-of: argocd
   name: argocd-application-controller
-  annotations:
-    configmanagement.gke.io/cluster-selector: gcp-anthos, aws-anthos
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -81,8 +75,6 @@ metadata:
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/part-of: argocd
   name: argocd-server
-  annotations:
-    configmanagement.gke.io/cluster-selector: gcp-anthos, aws-anthos
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -99,8 +91,6 @@ metadata:
     app.kubernetes.io/name: applications.argoproj.io
     app.kubernetes.io/part-of: argocd
   name: applications.argoproj.io
-  annotations:
-    configmanagement.gke.io/cluster-selector: gcp-anthos, aws-anthos
 spec:
   group: argoproj.io
   names:
