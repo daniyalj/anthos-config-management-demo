@@ -1,2 +1,2 @@
-# acm
+# Anthos Config Management Demo
 
