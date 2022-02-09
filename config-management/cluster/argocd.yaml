@@ -83,6 +83,7 @@ subjects:
 - kind: ServiceAccount
   name: argocd-server
   namespace: argocd
+
 ---
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
@@ -1848,8 +1849,6 @@ metadata:
     app.kubernetes.io/name: appprojects.argoproj.io
     app.kubernetes.io/part-of: argocd
   name: appprojects.argoproj.io
-  annotations:
-    configmanagement.gke.io/cluster-selector: gcp-anthos, aws-anthos
 spec:
   group: argoproj.io
   names:
