@@ -1,0 +1,22 @@
+apiVersion: v1
+data:
+  repositories: |
+    - insecure: true
+      insecureIgnoreHostKey: true
+      name: springstore-deploy
+      sshPrivateKeySecret:
+        key: sshPrivateKey
+        name: gitlab
+      type: git
+      url: git@gitlab.com:daniyalj/spring-store-env.git
+  resource.customizations: |
+    admissionregistration.k8s.io/MutatingWebhookConfiguration:
+      ignoreDifferences: |
+        jsonPointers:
+        - /webhooks/0/clientConfig/caBundle
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-cm

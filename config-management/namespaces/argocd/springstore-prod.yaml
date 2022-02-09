@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: springstore-prod
+spec:
+  destination:
+    namespace: springstore-prod
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: kube/prod/
+    repoURL: git@gitlab.com:daniyalj/spring-store-env.git
+    targetRevision: master
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+  sourceType: Directory
+  sync:
+    comparedTo:
+      destination:
+        namespace: springstore-prod
+        server: https://kubernetes.default.svc
+      source:
+        path: kube/prod/
+        repoURL: git@gitlab.com:daniyalj/spring-store-env.git
+        targetRevision: master
