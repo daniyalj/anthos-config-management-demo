@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: springstore-dev
+  name: springstore-prod
   namespace: argocd
 spec:
   destination:
-    namespace: springstore-dev
+    namespace: springstore-prod
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: kube/dev/
+    path: kube/prod/
     repoURL: git@gitlab.com:daniyalj/spring-store-env.git
     targetRevision: master
   syncPolicy:
@@ -20,9 +20,9 @@ spec:
   sync:
     comparedTo:
       destination:
-        namespace: springstore-dev
+        namespace: springstore-prod
         server: https://kubernetes.default.svc
       source:
-        path: kube/dev/
+        path: kube/prod/
         repoURL: git@gitlab.com:daniyalj/spring-store-env.git
         targetRevision: master
