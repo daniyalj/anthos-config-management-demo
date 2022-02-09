@@ -4,3 +4,5 @@ metadata:
   name: springstore-dev
   labels:
     istio-injection: enabled
+  annotations:
+    configmanagement.gke.io/cluster-selector: aws-anthos
