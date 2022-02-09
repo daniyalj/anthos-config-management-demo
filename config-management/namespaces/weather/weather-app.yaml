@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: weather
+  namespace: weather
   annotations:
     configmanagement.gke.io/cluster-selector: azure-anthos
 spec:
@@ -29,6 +30,7 @@ metadata:
   labels:
     app: weather
   name: weather
+  namespace: weather
 spec:
   ports:
   - name: 8080-tcp
@@ -43,6 +45,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: weather
+  namespace: weather
   annotations:
     configmanagement.gke.io/cluster-selector: aws-anthos
 spec:
@@ -69,6 +72,7 @@ metadata:
   labels:
     app: weather
   name: weather
+  namespace: weather
 spec:
   ports:
   - name: 8080-tcp
@@ -83,6 +87,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: weather
+  namespace: weather
   annotations:
     configmanagement.gke.io/cluster-selector: gcp-anthos
 spec:
@@ -109,6 +114,7 @@ metadata:
   labels:
     app: weather
   name: weather
+  namespace: weather
 spec:
   ports:
   - name: 8080-tcp
