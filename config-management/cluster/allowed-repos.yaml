@@ -3,7 +3,7 @@ kind: K8sAllowedRepos
 metadata:
   name: repo-is-daniyalj
   annotations:
-    configmanagement.gke.io/cluster-selector: gcp-anthos, azure-anthos
+    configsync.gke.io/cluster-name-selector: gcp-anthos,azure-anthos
 spec:
   match:
     kinds:
