@@ -2,6 +2,8 @@ apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sAllowedRepos
 metadata:
   name: repo-is-daniyalj
+  annotations:
+    configmanagement.gke.io/cluster-selector: gcp-anthos, azure-anthos
 spec:
   match:
     kinds:
