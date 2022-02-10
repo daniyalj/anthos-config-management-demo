@@ -1,0 +1,11 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: namespace2
+  name: reader
+  annotations:
+    configsync.gke.io/cluster-name-selector: gcp-anthos,attached-anthos
+rules:
+- apiGroups: [""]
+  resources: ["namespaces"]
+  verbs: ["get", "watch", "list"]
