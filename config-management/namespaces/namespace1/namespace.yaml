@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: namespace1
   annotations:
-    configmanagement.gke.io/cluster-selector: gcp-anthos,azure-anthos,aws-anthos
+    configsync.gke.io/cluster-name-selector: gcp-anthos,azure-anthos,aws-anthos
