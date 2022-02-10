@@ -1,0 +1,18 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: repo-is-daniyalj
+  annotations:
+    configsync.gke.io/cluster-name-selector: gcp-anthos,azure-anthos
+spec:
+  match:
+    kinds:
+    - apiGroups:
+      - ""
+      kinds:
+      - Pod
+    namespaces:
+    - weather
+  parameters:
+    repos:
+    - docker.io/daniyalj/
