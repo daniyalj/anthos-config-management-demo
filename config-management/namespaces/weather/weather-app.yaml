@@ -1,0 +1,126 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather
+  namespace: weather
+  annotations:
+    configmanagement.gke.io/cluster-selector: azure-anthos
+spec:
+  selector:
+    matchLabels:
+      app: weather
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: weather
+    spec:
+      containers:
+      - name: weather
+        image: docker.io/daniyalj/weather-app:azure
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    configmanagement.gke.io/cluster-selector: azure-anthos
+  labels:
+    app: weather
+  name: weather
+  namespace: weather
+spec:
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: weather
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather
+  namespace: weather
+  annotations:
+    configmanagement.gke.io/cluster-selector: aws-anthos
+spec:
+  selector:
+    matchLabels:
+      app: weather
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: weather
+    spec:
+      containers:
+      - name: weather
+        image: docker.io/daniyalj/weather-app:aws
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    configmanagement.gke.io/cluster-selector: aws-anthos
+  labels:
+    app: weather
+  name: weather
+  namespace: weather
+spec:
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: weather
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather
+  namespace: weather
+  annotations:
+    configmanagement.gke.io/cluster-selector: gcp-anthos
+spec:
+  selector:
+    matchLabels:
+      app: weather
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: weather
+    spec:
+      containers:
+      - name: weather
+        image: docker.io/daniyalj/weather-app:gcp
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    configmanagement.gke.io/cluster-selector: gcp-anthos
+  labels:
+    app: weather
+  name: weather
+  namespace: weather
+spec:
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: weather
+  type: LoadBalancer
