@@ -1,0 +1,21 @@
+# root-sync.yaml
+# If you are using a Config Sync version earlier than 1.7.0,
+# use: apiVersion: configsync.gke.io/v1alpha1
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: root-sync
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  git:
+    repo: https://github.com/daniyalj/anthos-config-management-demo.git 
+    branch: main
+    dir: "config-management"
+    period: 15s
+    auth: none
+    # auth: ssh
+    # secretRef:
+    #   name: git-creds
+    # the `noSSLVerify` field is supported in Anthos Config Management version 1.8.2 and later.
+    noSSLVerify: false
